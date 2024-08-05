@@ -1,0 +1,190 @@
+Sub XMLFromOrderForm()
+    Dim orderform_content As String
+    Dim fileName As String
+    fileName = "C:\Users\erikm\Desktop\Toppan Assignment\orderform.txt"
+    
+
+    orderform_content = ReadFile(fileName)
+    
+
+    Dim customer_name As String
+    Dim date_order As String
+    Dim site_of As String
+    Dim orderform_number As String
+    Dim revision As String
+    Dim page As String
+    Dim technology_name As String
+    Dim status As String
+    Dim mask_set_name As String
+    Dim fab_unit As String
+    Dim email_address As String
+    Dim po_numbers As String
+    Dim site_to_send_masks_to As String
+    Dim site_to_send_invoice_to As String
+    Dim technical_contact As String
+    Dim device As String
+    Dim mask_supplier As String
+
+    customer_name = ExtractPattern(orderform_content, "!CUSTOMER_NAME__!!", 0)
+    
+    mask_supplier = ExtractPattern(orderform_content, "MASK SUPPLIER\s*:\s*(\w+)", 0)
+    
+    date_order = ExtractPattern(orderform_content, "(\d{2}/\d{2}/\d{4})", 0) 'DATE\s*:\s*
+
+    date_order = Format(CDate(date_order), "yyyy-mm-dd")
+
+    site_of = ExtractPattern(orderform_content, "SITE OF\s*:\s*(\w+)", 0)
+    orderform_number = ExtractPattern(orderform_content, "ORDERFORM NUMBER\s*:\s*([\w]+\s*(\d+))", 0)
+    revision = ExtractPattern(orderform_content, "REVISION\s*:\s*(\d+)", 0)
+    page = ExtractPattern(orderform_content, "PAGE\s*:\s*(\d+)", 0)
+    technology_name = ExtractPattern(orderform_content, "TECHNOLOGY NAME\s*:\s*([\w]+\s*[A-Z0-9.%]+)", 0)
+    status = ExtractPattern(orderform_content, "STATUS\s*:\s*(\w+)", 0)
+    mask_set_name = ExtractPattern(orderform_content, "MASK SET NAME\s*:\s*(\w+)", 0)
+    fab_unit = ExtractPattern(orderform_content, "FAB UNIT\s*:\s*(\w+)", 0)
+    email_address = ExtractPattern(orderform_content, "EMAIL\s*:\s*([\w@:\.]+)", 0)
+    po_numbers = ExtractPattern(orderform_content, "P.O. NUMBERS\s*:\s*(\w+)", 0)
+    site_to_send_masks_to = ExtractPattern(orderform_content, "SITE TO SEND MASKS TO\s*:\s*(\w+)", 0)
+    site_to_send_invoice_to = ExtractPattern(orderform_content, "SITE TO SEND INVOICE TO\s*:\s*(\w+\s*\w+)", 0)
+    technical_contact = ExtractPattern(orderform_content, "TECHNICAL CONTACT\s*:\s*([\w]+\s*[A-Z0-9.%/]+)", 0)
+    device = ExtractPattern(orderform_content, "DEVICE\s*:\s*([\w@]+)", 0)
+    
+
+    Dim xmlDoc As Object
+    Set xmlDoc = CreateObject("MSXML2.DOMDocument")
+    xmlDoc.appendChild xmlDoc.createProcessingInstruction("xml", "version='1.0' encoding='UTF-8'")
+
+    Dim root As Object
+    Set root = xmlDoc.createElement("OrderForm")
+    xmlDoc.appendChild root
+
+    AppendChildElement xmlDoc, root, "Customer", customer_name
+    AppendChildElement xmlDoc, root, "Device", device
+    AppendChildElement xmlDoc, root, "MaskSupplier", mask_supplier
+    
+    AppendChildElement xmlDoc, root, "Date", date_order
+    AppendChildElement xmlDoc, root, "SiteOf", site_of
+    AppendChildElement xmlDoc, root, "OrderFormNumber", orderform_number
+    AppendChildElement xmlDoc, root, "Revision", revision
+    AppendChildElement xmlDoc, root, "Page", page
+    AppendChildElement xmlDoc, root, "TechnologyName", technology_name
+    AppendChildElement xmlDoc, root, "Status", status
+    AppendChildElement xmlDoc, root, "MaskSetName", mask_set_name
+    AppendChildElement xmlDoc, root, "FabUnit", fab_unit
+    AppendChildElement xmlDoc, root, "EmailAddress", email_address
+
+
+    Dim levels As Object
+    Set levels = xmlDoc.createElement("Levels")
+    root.appendChild levels
+    
+
+    Dim levelPattern As String
+    levelPattern = "(\d{2})\s*\|([A-Z\s\d]+?)\s*\|\s*(\d+)\s*\|\s*([\w]+)\s*\|\s*(\d+)\s*\|\s*(\d{2}\w{3}\d{2})"
+    Dim matches As Object
+    Set matches = ExtractMatches(orderform_content, levelPattern)
+
+    Dim match As Object
+    For Each match In matches
+        Dim level As Object
+        Set level = xmlDoc.createElement("Level")
+        level.setAttribute "num", match.SubMatches(0)
+        levels.appendChild level
+        
+        AppendChildElement xmlDoc, level, "MaskCodification", match.SubMatches(1)
+        AppendChildElement xmlDoc, level, "Group", match.SubMatches(2)
+        AppendChildElement xmlDoc, level, "Cycle", match.SubMatches(3)
+        AppendChildElement xmlDoc, level, "Quantity", match.SubMatches(4)
+
+        
+        Dim shipdate As String
+        shipdate = match.SubMatches(5)
+        If IsDate(shipdate) Then
+            shipdate = Format(CDate(shipdate), "yyyy-mm-dd")
+        End If
+        AppendChildElement xmlDoc, level, "ShipDate", shipdate
+    Next match
+
+
+    Dim cd_information As Object
+    Set cd_information = xmlDoc.createElement("Cdinformation")
+    root.appendChild cd_information
+
+    Dim cdPattern As String
+    cdPattern = "\|\s*(\d{2})\s*\|\s*(\w{2})\s*\|\s*([GF])\s*\|\s*(\w{2})\s*\|\s*([\d.]+)\s*\|\s*([\d.]+)\s*\|\s*(\d+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*([\w.]+)\s*\|\s*(\d+)\s*\|\s*(\w{3}\d{2}-\d{2}:\d{2})\s*\|"
+    Set matches = ExtractMatches(orderform_content, cdPattern)
+
+    For Each match In matches
+        Dim cd_level As Object
+        Set cd_level = xmlDoc.createElement("Level")
+        cd_information.appendChild cd_level
+        
+        AppendChildElement xmlDoc, cd_level, "Revision", match.SubMatches(1)
+        AppendChildElement xmlDoc, cd_level, "CDNumber", match.SubMatches(6)
+        AppendChildElement xmlDoc, cd_level, "CDName", match.SubMatches(7)
+        AppendChildElement xmlDoc, cd_level, "Feature", match.SubMatches(8)
+        AppendChildElement xmlDoc, cd_level, "Tone", match.SubMatches(9)
+        AppendChildElement xmlDoc, cd_level, "Polarity", match.SubMatches(10)
+    Next match
+
+
+    AppendChildElement xmlDoc, root, "PONumbers", po_numbers
+    AppendChildElement xmlDoc, root, "SiteToSendMasksTo", site_to_send_masks_to
+    AppendChildElement xmlDoc, root, "SiteToSendInvoiceTo", site_to_send_invoice_to
+    AppendChildElement xmlDoc, root, "TechnicalContact", technical_contact
+    AppendChildElement xmlDoc, root, "ShippingMethod", ""
+    AppendChildElement xmlDoc, root, "AdditionalInformation", ""
+
+
+    xmlDoc.Save "C:\Users\erikm\Desktop\Toppan Assignment\output_vba.xml"
+End Sub
+
+Function ReadFile(filePath As String) As String
+    Dim fso As Object
+    Set fso = CreateObject("Scripting.FileSystemObject")
+    Dim file As Object
+    Set file = fso.OpenTextFile(filePath, 1)
+    ReadFile = file.ReadAll
+    file.Close
+End Function
+
+Function ExtractPattern(content As String, pattern As String, groupIndex As Integer) As String
+    Dim regEx As Object
+    Set regEx = CreateObject("VBScript.RegExp")
+    regEx.pattern = pattern
+    regEx.IgnoreCase = True
+    regEx.Global = False
+
+    Dim matches As Object
+    Set matches = regEx.Execute(content)
+    
+    If matches.Count > 0 Then
+        If matches(0).SubMatches.Count > groupIndex Then
+            ExtractPattern = matches(0).SubMatches(groupIndex)
+        Else
+            ExtractPattern = matches(0).Value
+        End If
+    Else
+        ExtractPattern = ""
+    End If
+End Function
+
+
+Function ExtractMatches(content As String, pattern As String) As Object
+    Dim regEx As Object
+    Set regEx = CreateObject("VBScript.RegExp")
+    regEx.pattern = pattern
+    regEx.IgnoreCase = True
+    regEx.Global = True
+    
+    Dim matches As Object
+    Set matches = regEx.Execute(content)
+    Set ExtractMatches = matches
+End Function
+
+Sub AppendChildElement(xmlDoc As Object, parent As Object, tagName As String, textContent As String)
+    Dim child As Object
+    Set child = xmlDoc.createElement(tagName)
+    child.text = textContent
+    parent.appendChild child
+End Sub
+

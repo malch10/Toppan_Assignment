@@ -1,0 +1,91 @@
+from lxml import etree
+import re
+from datetime import datetime
+from datetime import date
+
+
+with open('orderform.txt', 'r') as file:
+    orderform_content = file.read()
+
+
+customer_name = re.search(r'!CUSTOMER_NAME__!!', orderform_content).group(0)
+date_order = re.search(r'DATE\s*:\s*(\d{2}/\d{2}/\d{4})', orderform_content).group(1)
+
+date_order = datetime.strptime(date_order,"%m/%d/%Y")
+date_order = datetime.strftime(date_order,"%Y-%m-%d")
+
+site_of = re.search(r'SITE OF\s*:\s*(\w+)', orderform_content).group(1)
+orderform_number = re.search(r'ORDERFORM NUMBER\s*:\s*([\w]+\s*(\d+))', orderform_content).group(1)
+
+revision = re.search(r'REVISION\s*:\s*(\d+)', orderform_content).group(1)
+page = re.search(r'PAGE\s*:\s*(\d+)', orderform_content).group(1)
+technology_name = re.search(r'TECHNOLOGY NAME\s*:\s*([\w]+\s*[A-Z0-9.%]+)', orderform_content).group(1)
+status = re.search(r'STATUS\s*:\s*(\w+)', orderform_content).group(1)
+mask_set_name = re.search(r'MASK SET NAME\s*:\s*(\w+)', orderform_content).group(1)
+fab_unit = re.search(r'FAB UNIT\s*:\s*(\w+)', orderform_content).group(1)
+email_address = re.search(r'EMAIL\s*:\s*([\w@:\.]+)', orderform_content).group(1)
+mask_supplier = re.search(r'MASK SUPPLIER\s*:\s*(\w+)', orderform_content).group(1)
+
+po_numbers = re.search(r'P.O. NUMBERS\s*:\s*(\w+)', orderform_content).group(1)
+site_to_send_masks_to = re.search(r'SITE TO SEND MASKS TO\s*:\s*(\w+)', orderform_content).group(1)
+site_to_send_invoice_to = re.search(r'SITE TO SEND INVOICE TO\s*:\s*(\w+\s*\w+)', orderform_content).group(1)
+technical_contact = re.search(r'TECHNICAL CONTACT\s*:\s*([\w]+\s*[A-Z0-9.%/]+)', orderform_content).group(1)
+device = re.search(r'DEVICE\s*:\s*([\w@]+)', orderform_content).group(1)
+
+
+order_form = etree.Element('OrderForm')
+etree.SubElement(order_form, 'Customer').text = customer_name
+etree.SubElement(order_form, 'Device').text = device
+etree.SubElement(order_form, 'MaskSupplier').text = mask_supplier
+etree.SubElement(order_form, 'Date').text = date_order
+etree.SubElement(order_form, 'SiteOf').text = site_of
+etree.SubElement(order_form, 'OrderFormNumber').text = orderform_number
+etree.SubElement(order_form, 'Revision').text = revision
+etree.SubElement(order_form, 'Page').text = page
+etree.SubElement(order_form, 'TechnologyName').text = technology_name
+etree.SubElement(order_form, 'Status').text = status
+etree.SubElement(order_form, 'MaskSetName').text = mask_set_name
+etree.SubElement(order_form, 'FabUnit').text = fab_unit
+etree.SubElement(order_form, 'EmailAddress').text = email_address
+
+
+
+levels = etree.SubElement(order_form, 'Levels')
+level_pattern = re.compile(r'(\d{2})\s*\|([A-Z\s\d]+?)\s*\|\s*(\d+)\s*\|\s*([\w]+)\s*\|\s*(\d+)\s*\|\s*(\d{2}\w{3}\d{2})')
+matches = level_pattern.findall(orderform_content)
+for match in matches:
+    level = etree.SubElement(levels, 'Level', num=match[0])
+    etree.SubElement(level, 'MaskCodification').text = match[1]
+    etree.SubElement(level, 'Group').text = match[2]
+    etree.SubElement(level, 'Cycle').text = match[3]
+    etree.SubElement(level, 'Quantity').text = match[4]
+    shipdate = datetime.strptime(match[5],"%d%b%y")
+    shipdate = datetime.strftime(shipdate,"%Y-%m-%d")
+    etree.SubElement(level, 'ShipDate').text = shipdate
+
+
+
+cd_information = etree.SubElement(order_form, 'Cdinformation')
+cd_pattern = re.compile(r'\|\s*(\d{2})\s*\|\s*(\w{2})\s*\|\s*([GF])\s*\|\s*(\w{2})\s*\|\s*([\d.]+)\s*\|\s*([\d.]+)\s*\|\s*(\d+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*(\w+)\s*\|\s*([\w.]+)\s*\|\s*(\d+)\s*\|\s*(\w{3}\d{2}-\d{2}:\d{2})\s*\|')
+cd_matches = cd_pattern.findall(orderform_content)
+for match in cd_matches:
+    cd_level = etree.SubElement(cd_information, 'Level')
+    etree.SubElement(cd_level, 'Revision').text = match[1]
+    etree.SubElement(cd_level, 'CDNumber').text = match[6]
+    etree.SubElement(cd_level, 'CDName').text = match[7]
+    etree.SubElement(cd_level, 'Feature').text = match[8]
+    etree.SubElement(cd_level, 'Tone').text = match[9]
+    etree.SubElement(cd_level, 'Polarity').text = match[10]
+
+
+etree.SubElement(order_form, 'PONumbers').text = po_numbers
+etree.SubElement(order_form, 'SiteToSendMasksTo').text = site_to_send_masks_to
+etree.SubElement(order_form, 'SiteToSendInvoiceTo').text = site_to_send_invoice_to
+etree.SubElement(order_form, 'TechnicalContact').text = technical_contact
+etree.SubElement(order_form, 'ShippingMethod').text = ''
+etree.SubElement(order_form, 'AdditionalInformation').text = ''
+
+
+xml_tree = etree.ElementTree(order_form)
+xml_tree.write('output_generated.xml', pretty_print=True, xml_declaration=True, encoding='UTF-8')
+

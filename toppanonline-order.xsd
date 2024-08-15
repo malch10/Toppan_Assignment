@@ -1,0 +1,1500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:element name="Order">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="General"/>
+				<xs:element ref="Layers" maxOccurs="unbounded"/>
+				<xs:element ref="MLRRequirements" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Patterns" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="PatternPlacements" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="MaskTitles" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="InnerTitles" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Barcodes" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Lithos" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Fractures" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="CDs" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="LayerCDs" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="CDImagings" minOccurs="0" maxOccurs="unbounded"/>	
+				<xs:element ref="Registrations" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Defects" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="AIMs" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="Pellicles" minOccurs="0" maxOccurs="unbounded"/>				
+				<xs:element ref="Packagings" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="DataOutputs" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="PSRs" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="AdditionalInfos" minOccurs="0" maxOccurs="unbounded"/>				
+			</xs:sequence>
+			<xs:attribute name="noNamespaceSchemaLocation" type="xs:string" use="optional"/>
+			<xs:attribute name="DocumentVersion" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:enumeration value="2.0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="General">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="OrderNumber" minOccurs="0"/>
+				<xs:element ref="Customer" minOccurs="0"/>
+				<xs:element ref="OrderType" minOccurs="0"/>
+				<xs:element ref="MfgSite" minOccurs="0"/>
+				<xs:element ref="Fab" minOccurs="0"/>
+				<xs:element ref="Device"/>
+				<xs:element ref="Code" minOccurs="0"/>
+				<xs:element ref="ProjectName" minOccurs="0"/>
+				<xs:element ref="DesignRule" minOccurs="0"/>
+				<xs:element ref="Technology" minOccurs="0"/>
+				<xs:element ref="SecureProduct" minOccurs="0"/>
+				<xs:element ref="OrderFrom" minOccurs="0"/>
+				<xs:element ref="OrderFromCustomer" minOccurs="0"/>
+				<xs:element ref="ShipTo" minOccurs="0"/>
+				<xs:element ref="ShipToCustomer" minOccurs="0"/>
+				<xs:element ref="BillTo" minOccurs="0"/>
+				<xs:element ref="BillToCustomer" minOccurs="0"/>
+				<xs:element ref="FoundryCustomer" minOccurs="0"/>
+				<xs:element ref="QuoteReference" minOccurs="0"/>
+				<xs:element ref="PONumber" minOccurs="0"/>
+				<xs:element ref="AcctMgr" minOccurs="0"/>
+				<xs:element ref="Currency" minOccurs="0"/>
+				<xs:element ref="OrderPrice" minOccurs="0"/>
+				<xs:element ref="OrderStatus" minOccurs="0"/>
+				<xs:element ref="CreatedBy" minOccurs="0"/>
+				<xs:element ref="CreatedDate" minOccurs="0"/>
+				<xs:element ref="LastUpdatedDate" minOccurs="0"/>
+				<xs:element ref="TechnicalContact" minOccurs="0"/>
+				<xs:element ref="ShipToContact" minOccurs="0"/>
+				<xs:element ref="AdditionalTechnicalContacts" minOccurs="0"/>
+				<xs:element ref="OrderComments" minOccurs="0"/>
+				<xs:element ref="SpecialInstructions" minOccurs="0"/>
+				<xs:element ref="MarketSegment" minOccurs="0"/>
+				<xs:element ref="BuildInRegion" minOccurs="0"/>
+				<xs:element ref="ShipToRegion" minOccurs="0"/>
+				<xs:element ref="RDDesignation" minOccurs="0"/>
+				<xs:element ref="RDFundingProject" minOccurs="0"/>
+				<xs:element ref="AutoReleaseToWip" minOccurs="0"/>
+				<xs:element ref="AIMsNR" minOccurs="0"/>
+				<xs:element ref="PellicleNR" minOccurs="0"/>
+				<xs:element ref="PostPellInspNR" minOccurs="0"/>
+				<xs:element ref="FracturesNR" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OrderNumber" type="xs:integer"/>
+	<xs:element name="Customer" type="xs:string"/>
+	<xs:element name="OrderType" type="xs:string"/>
+	<xs:element name="MfgSite" type="xs:string"/>
+	<xs:element name="Fab" type="xs:string"/>
+	<xs:element name="Device" type="deviceRequiredString"/>
+    <xs:element name="Code" type="xs:string"/>
+	<xs:element name="ProjectName" type="xs:string"/>
+	<xs:element name="DesignRule" type="xs:string"/>
+	<xs:element name="Technology" type="xs:string"/>
+	<xs:element name="SecureProduct" type="YNOrEmpty"/>
+	<xs:element name="OrderFrom" type="xs:string"/>
+	<xs:element name="OrderFromCustomer" type="xs:string"/>
+	<xs:element name="ShipTo" type="xs:string"/>
+	<xs:element name="ShipToCustomer" type="xs:string"/>
+	<xs:element name="BillTo" type="xs:string"/>
+	<xs:element name="BillToCustomer" type="xs:string"/>
+	<xs:element name="FoundryCustomer" type="xs:string"/>
+	<xs:element name="QuoteReference" type="xs:string"/>
+	<xs:element name="PONumber" type="xs:string"/>
+	<xs:element name="AcctMgr" type="xs:string"/>	
+	<xs:element name="Currency" type="xs:string"/>
+	<xs:element name="OrderPrice" type="xs:decimal"/>
+	<xs:element name="OrderStatus" type="xs:string"/>
+	<xs:element name="CreatedBy" type="xs:string"/>
+	<xs:element name="CreatedDate" type="xs:date"/>
+	<xs:element name="LastUpdatedDate" type="xs:date"/>
+	<xs:element name="TechnicalContact">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Contact"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ShipToContact">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Contact" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AdditionalTechnicalContacts">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Contact" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OrderComments" type="preserveWhitespace"/>
+	<xs:element name="SpecialInstructions" type="preserveWhitespace"/>
+	<xs:element name="MarketSegment" type="xs:string"/>
+	<xs:element name="BuildInRegion" type="xs:string"/>
+	<xs:element name="ShipToRegion" type="xs:string"/>
+	<xs:element name="RDDesignation" type="xs:string"/>
+	<xs:element name="RDFundingProject" type="xs:string"/>
+	<xs:element name="AutoReleaseToWip" type="YNOrEmpty"/>
+	<xs:element name="AIMsNR" type="YNOrEmpty"/>
+	<xs:element name="PellicleNR" type="YNOrEmpty"/>
+	<xs:element name="PostPellInspNR" type="YNOrEmpty"/>
+	<xs:element name="FracturesNR" type="YNOrEmpty"/>
+	<xs:element name="Layers">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Layer" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Layer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="LayerNumber"/>
+				<xs:element ref="LayerDevice" minOccurs="0"/>
+				<xs:element ref="LayerName" minOccurs="0"/>
+				<xs:element ref="Revision" minOccurs="0"/>
+				<xs:element ref="SerialNumber" minOccurs="0"/>
+				<xs:element ref="ProductType" minOccurs="0"/>
+				<xs:element ref="DirectCopy" minOccurs="0"/>
+				<xs:element ref="TpiHoldsMaster" minOccurs="0"/>
+				<xs:element ref="GlassSize" minOccurs="0"/>
+				<xs:element ref="Product" minOccurs="0"/>
+				<xs:element ref="Quantity" minOccurs="0"/>
+				<xs:element ref="RouteSite" minOccurs="0"/>
+				<xs:element ref="ReleaseToWipSite" minOccurs="0"/>
+				<xs:element ref="DiversionPlan" minOccurs="0"/>
+				<xs:element ref="SendToSite" minOccurs="0"/>
+				<xs:element ref="GradeType" minOccurs="0"/>
+				<xs:element ref="Grade" minOccurs="0"/>
+				<xs:element ref="CATCDTolerance" minOccurs="0"/>
+				<xs:element ref="CATAltCDTolerance" minOccurs="0"/>
+				<xs:element ref="CATAltCDTolerance2" minOccurs="0"/>
+				<xs:element ref="CATCDUniformity" minOccurs="0"/>
+				<xs:element ref="CATAltCDUniformity" minOccurs="0"/>				
+				<xs:element ref="CATAltCDUniformity2" minOccurs="0"/>
+				<xs:element ref="CATRegTolerance" minOccurs="0"/>
+				<xs:element ref="CATAltRegTolerance" minOccurs="0"/>
+				<xs:element ref="CATDefectSize" minOccurs="0"/>				
+				<xs:element ref="Price" minOccurs="0"/>
+				<xs:element ref="PriceCode" minOccurs="0"/>
+				<xs:element ref="POLineNumber" minOccurs="0"/>
+				<xs:element ref="CustomerTracking" minOccurs="0"/>
+				<xs:element ref="Secured" minOccurs="0"/>
+				<xs:element ref="TemplateDescription" minOccurs="0"/>
+				<xs:element ref="CountryOfManufacture" minOccurs="0"/>
+				<xs:element ref="NoCommercialChargeValue" minOccurs="0"/>
+				<xs:element ref="MaskParity" minOccurs="0"/>
+				<xs:element ref="Plots" minOccurs="0"/>
+				<xs:element ref="Maskview" minOccurs="0"/>
+				<xs:element ref="DefectDensity" minOccurs="0"/>
+				<xs:element ref="DeliveryDate" minOccurs="0"/>
+				<xs:element ref="RequestedDueDate" minOccurs="0"/>
+				<xs:element ref="CustomerArrivalDate" minOccurs="0"/>				
+				<xs:element ref="ShipMethodSite" minOccurs="0"/>
+				<xs:element ref="ShipMethod" minOccurs="0"/>
+				<xs:element ref="CustomerECCN" minOccurs="0"/>
+				<xs:element ref="PackSlipComments" minOccurs="0"/>
+				<xs:element ref="LayerStatus" minOccurs="0"/>
+				<xs:element ref="GlassType" minOccurs="0"/>
+				<xs:element ref="MaskCoating" minOccurs="0"/>
+				<xs:element ref="MaskFeatureType" minOccurs="0"/>
+				<xs:element ref="OPCFeatureType" minOccurs="0"/>
+				<xs:element ref="FieldTone" minOccurs="0"/>
+				<xs:element ref="MaterialWavelength" minOccurs="0"/>
+				<xs:element ref="EtchType" minOccurs="0"/>
+				<xs:element ref="EtchTypeReqBy" minOccurs="0"/>
+				<xs:element ref="Brand" minOccurs="0"/>				
+				<xs:element ref="ProcessFlow" minOccurs="0"/>
+				<xs:element ref="PellRequired" minOccurs="0"/>
+				<xs:element ref="CdRequired" minOccurs="0"/>
+				<xs:element ref="ChromeSideDescription" minOccurs="0"/>
+				<xs:element ref="GlassSideDescription" minOccurs="0"/>
+				<xs:element ref="CompactLabel" minOccurs="0"/>
+				<xs:element ref="CustomerCode" minOccurs="0"/>
+				<xs:element ref="CustomerInformation1" minOccurs="0"/>
+				<xs:element ref="CustomerInformation2" minOccurs="0"/>	
+				<xs:element ref="ImagingRequiredBy" minOccurs="0"/>
+				<xs:element ref="NumberOfImages" minOccurs="0"/>				
+				<xs:element ref="StepperTypes" minOccurs="0"/>
+				<xs:element ref="MultiLayer" minOccurs="0"/>				
+				<xs:element ref="NumMLRFields" minOccurs="0"/>				
+				<xs:element ref="JobdeckTemplate" minOccurs="0"/>								
+				<xs:element ref="ShipSet" minOccurs="0"/>
+				<xs:element ref="TechnologyNode" minOccurs="0"/>
+				<xs:element ref="LogicDramOther" minOccurs="0"/>
+				<xs:element ref="ScheduledETA" minOccurs="0"/>
+				<xs:element ref="CurrentArrivalSchedule" minOccurs="0"/>
+				<xs:element ref="FrameDieReceived" minOccurs="0"/>
+				<xs:element ref="PrimeDieReceived" minOccurs="0"/>
+				<xs:element ref="CustJobViewRelease" minOccurs="0"/>
+				<xs:element ref="FoundryJobViewRelease" minOccurs="0"/>
+				<xs:element ref="LayerRDDesignation" minOccurs="0"/>
+				<xs:element ref="LayerRDFundingProject" minOccurs="0"/>
+				<xs:element ref="LayerSpecComments" minOccurs="0"/>
+				<xs:element ref="TPInstructions" minOccurs="0"/>
+				<xs:element ref="ShippingInstructions" minOccurs="0"/>
+				<xs:element ref="ShipInSequence" minOccurs="0"/>
+				<xs:element ref="SiteApplication" minOccurs="0"/>
+				<xs:element ref="ShipToLocation" minOccurs="0"/>				
+				<xs:element ref="LineShipToContact" minOccurs="0"/>                  
+				<xs:element ref="CentralityYN" minOccurs="0"/>  
+				<xs:element ref="CentralityType" minOccurs="0"/>
+				<xs:element ref="CentralityReqBy" minOccurs="0"/>
+				<xs:element ref="CentralityXTol" minOccurs="0"/>
+				<xs:element ref="CentralityYTol" minOccurs="0"/>
+				<xs:element ref="RotationTol" minOccurs="0"/>
+				<xs:element ref="LayerSpecRotate" minOccurs="0"/>
+				<xs:element ref="NACentralityYN" minOccurs="0"/>
+                <xs:element ref="NACentralityType" minOccurs="0"/>
+                <xs:element ref="NACentralityReqdBy" minOccurs="0"/>
+                <xs:element ref="NACentralityXTol" minOccurs="0"/>
+                <xs:element ref="NACentralityYTol" minOccurs="0"/>
+                <xs:element ref="NARotationTol" minOccurs="0"/>
+                <xs:element ref="NALayerSpecRotate" minOccurs="0"/>
+				<xs:element ref="CheckReticle" minOccurs="0"/>			
+				<xs:element ref="CustomerHold" minOccurs="0"/>					
+				<xs:element ref="DropEqualContractDate" minOccurs="0"/>			
+				<xs:element ref="RequestEqualMfgDate" minOccurs="0"/>
+				<xs:element ref="TimeDataReceived" minOccurs="0"/>
+				<xs:element ref="MaskShopComments" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LayerNumber" type="xs:integer"/>
+	<xs:element name="LayerDevice">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="30"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="LayerName">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="30"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Revision">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="30"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="SerialNumber">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="30"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="ProductType" type="xs:string"/>
+	<xs:element name="DirectCopy" type="xs:string"/>
+	<xs:element name="TpiHoldsMaster" type="xs:string"/>
+	<xs:element name="GlassSize" type="xs:string"/>
+	<xs:element name="Product" type="xs:string"/>
+	<xs:element name="Quantity" type="xs:integer"/>
+	<xs:element name="RouteSite" type="xs:string"/>
+	<xs:element name="ReleaseToWipSite" type="xs:string"/>
+	<xs:element name="DiversionPlan" type="xs:string"/>
+	<xs:element name="SendToSite" type="xs:string"/>
+	<xs:element name="GradeType" type="xs:string"/>
+	<xs:element name="Grade" type="xs:string"/>
+	<xs:element name="CATCDTolerance" type="xs:string"/>
+	<xs:element name="CATAltCDTolerance" type="xs:string"/>
+	<xs:element name="CATAltCDTolerance2" type="xs:string"/>
+	<xs:element name="CATCDUniformity" type="xs:string"/>
+	<xs:element name="CATAltCDUniformity" type="xs:string"/>
+	<xs:element name="CATAltCDUniformity2" type="xs:string"/>
+	<xs:element name="CATRegTolerance" type="xs:string"/>
+	<xs:element name="CATAltRegTolerance" type="xs:string"/>
+	<xs:element name="CATDefectSize" type="xs:string"/>	
+	<xs:element name="Price" type="xs:decimal"/>
+	<xs:element name="PriceCode" type="xs:string"/>
+	<xs:element name="POLineNumber" type="xs:string"/>
+	<xs:element name="CustomerTracking" type="xs:string"/>
+	<xs:element name="Secured" type="YNOrEmpty"/>
+	<xs:element name="TemplateDescription" type="xs:string"/>
+	<xs:element name="CountryOfManufacture" type="xs:string"/>
+	<xs:element name="NoCommercialChargeValue" type="xs:decimal"/>
+	<xs:element name="MaskParity" type="xs:string"/>
+	<xs:element name="Plots" type="requiredApproval"/>
+	<xs:element name="Maskview" type="approval"/>
+	<xs:element name="DefectDensity" type="defectDensityString"/>
+	<xs:element name="DeliveryDate" type="validDateWithOptionalTime"/>
+	<xs:element name="RequestedDueDate" type="validDateWithOptionalTime"/>
+	<xs:element name="CustomerArrivalDate" type="validDateWithOptionalTime"/>	
+	<xs:element name="ShipMethodSite" type="xs:string"/>
+	<xs:element name="ShipMethod" type="xs:string"/>
+	<xs:element name="CustomerECCN" type="xs:string"/>
+	<xs:element name="PackSlipComments" type="xs:string"/>
+	<xs:element name="LayerStatus" type="xs:string"/>
+	<xs:element name="GlassType" type="xs:string"/>
+	<xs:element name="MaskCoating" type="xs:string"/>
+	<xs:element name="MaskFeatureType" type="xs:string"/>
+	<xs:element name="OPCFeatureType" type="xs:string"/>
+	<xs:element name="FieldTone" type="xs:string"/>
+	<xs:element name="MaterialWavelength" type="xs:string"/>
+	<xs:element name="EtchType" type="xs:string"/>
+	<xs:element name="EtchTypeReqBy" type="xs:string"/>
+	<xs:element name="Brand" type="xs:string"/>	
+	<xs:element name="ProcessFlow" type="xs:string"/>
+	<xs:element name="PellRequired" type="YNOrEmpty"/>
+	<xs:element name="CdRequired" type="YNOrEmpty"/>
+	<xs:element name="ChromeSideDescription" type="xs:string"/>
+	<xs:element name="GlassSideDescription" type="xs:string"/>
+	<xs:element name="CompactLabel" type="xs:string"/>
+	<xs:element name="CustomerCode" type="xs:string"/>
+	<xs:element name="CustomerInformation1" type="xs:string"/>
+	<xs:element name="CustomerInformation2" type="xs:string"/>
+    	<xs:element name="ImagingRequiredBy" type="xs:string"/>
+    	<xs:element name="NumberOfImages" type="xs:integer"/>
+	<xs:element name="StepperTypes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="StepperType" type="StepperTypeAttribute" minOccurs="0" maxOccurs="3"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+	<xs:complexType name="StepperTypeAttribute" mixed="true">
+		<xs:attribute name="Number" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="1"/>
+					<xs:enumeration value="2"/>
+					<xs:enumeration value="3"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="MultiLayer" type="YNOrEmpty"/>
+	<xs:element name="NumMLRFields" type="xs:integer"/>
+	<xs:element name="JobdeckTemplate" type="xs:string"/>
+	<xs:element name="ShipSet" type="xs:string"/>
+	<xs:element name="TechnologyNode" type="xs:string"/>
+	<xs:element name="LogicDramOther" type="xs:string"/>
+	<xs:element name="ScheduledETA" type="validDateWithOptionalTime"/>
+	<xs:element name="CurrentArrivalSchedule" type="validDateWithOptionalTime"/>
+	<xs:element name="FrameDieReceived" type="validDateWithOptionalTime"/>
+	<xs:element name="PrimeDieReceived" type="validDateWithOptionalTime"/>
+	<xs:element name="CustJobViewRelease" type="validDateWithOptionalTime"/>
+	<xs:element name="FoundryJobViewRelease" type="validDateWithOptionalTime"/>
+	<xs:element name="LayerRDDesignation" type="xs:string"/>
+	<xs:element name="LayerRDFundingProject" type="xs:string"/>
+	<xs:element name="LayerSpecComments" type="xs:string"/>
+	<xs:element name="TPInstructions" type="xs:string"/>
+	<xs:element name="ShippingInstructions" type="xs:string"/>
+	<xs:element name="ShipInSequence" type="YNOrEmpty"/>
+	<xs:element name="SiteApplication" type="xs:string"/>
+	<xs:element name="ShipToLocation" type="xs:string"/>	
+	<xs:element name="LineShipToContact" type="xs:string"/>
+	<xs:element name="CentralityYN" type="YNOrEmpty"/>
+	<xs:element name="CentralityType" type="xs:string"/>
+	<xs:element name="CentralityReqBy" type="xs:string"/>
+	<xs:element name="CentralityXTol" type="xs:decimal"/>
+	<xs:element name="CentralityYTol" type="xs:decimal"/>
+	<xs:element name="RotationTol" type="xs:decimal"/>
+	<xs:element name="LayerSpecRotate" type="xs:decimal"/>
+	<xs:element name="NACentralityYN" type="YNOrEmpty"/>
+	<xs:element name="NACentralityType" type="YNOrEmpty"/>
+	<xs:element name="NACentralityReqdBy" type="YNOrEmpty"/>
+	<xs:element name="NACentralityXTol" type="YNOrEmpty"/>
+	<xs:element name="NACentralityYTol" type="YNOrEmpty"/>
+	<xs:element name="NARotationTol" type="YNOrEmpty"/>
+	<xs:element name="NALayerSpecRotate" type="YNOrEmpty"/>
+	<xs:element name="CheckReticle" type="YNOrEmpty"/>
+	<xs:element name="CustomerHold" type="YNOrEmpty"/>	
+	<xs:element name="DropEqualContractDate" type="YNOrEmpty"/>
+	<xs:element name="RequestEqualMfgDate" type="YNOrEmpty"/>
+	<xs:element name="TimeDataReceived" type="validDateWithOptionalTime"/>
+	<xs:element name="MaskShopComments" type="xs:string"/>
+	<xs:element name="MLRRequirements">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="MLRRequirement" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MLRRequirement">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="MLRFieldName" minOccurs="0"/>			
+				<xs:element ref="MLRRevision" minOccurs="0"/>
+				<xs:element ref="MLRSerialNumber" minOccurs="0"/>
+				<xs:element ref="MLRTechnology" minOccurs="0"/>
+				<xs:element ref="MLRBadFields" minOccurs="0"/>
+				<xs:element ref="MLRFieldsComments" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+			<xs:attribute name="MLRFieldNumber" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MLRFieldName" type="xs:string"/>
+	<xs:element name="MLRRevision" type="xs:string"/>
+	<xs:element name="MLRSerialNumber" type="xs:string"/>
+	<xs:element name="MLRTechnology" type="xs:string"/>
+	<xs:element name="MLRBadFields" type="YNOrEmpty"/>
+	<xs:element name="MLRFieldsComments" type="xs:string"/>
+	<xs:element name="Patterns">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Pattern" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Pattern">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PatternNumber"/>
+				<xs:element ref="PatternType" minOccurs="0"/>
+				<xs:element ref="PatternName" minOccurs="0"/>
+				<xs:element ref="PatternUOM" minOccurs="0"/>
+				<xs:element ref="PatternIncomingX" minOccurs="0"/>
+				<xs:element ref="PatternIncomingY" minOccurs="0"/>
+				<xs:element ref="PatternScaleFactor" minOccurs="0"/>
+				<xs:element ref="PatternFinalX" minOccurs="0"/>
+				<xs:element ref="PatternFinalY" minOccurs="0"/>
+				<xs:element ref="PatternSteppingX" minOccurs="0"/>
+				<xs:element ref="PatternSteppingY" minOccurs="0"/>
+				<xs:element ref="PatternNikonX" minOccurs="0"/>
+				<xs:element ref="PatternNikonY" minOccurs="0"/>
+				<xs:element ref="PatternMultiPlacement" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PatternNumber" type="xs:integer"/>
+	<xs:element name="PatternType" type="xs:string"/>
+	<xs:element name="PatternName" type="xs:string"/>
+	<xs:element name="PatternUOM" type="xs:string"/>
+	<xs:element name="PatternIncomingX" type="xs:decimal"/>
+	<xs:element name="PatternIncomingY" type="xs:decimal"/>
+	<xs:element name="PatternScaleFactor" type="xs:decimal"/>
+	<xs:element name="PatternFinalX" type="xs:decimal"/>
+	<xs:element name="PatternFinalY" type="xs:decimal"/>
+	<xs:element name="PatternSteppingX" type="xs:decimal"/>
+	<xs:element name="PatternSteppingY" type="xs:decimal"/>
+	<xs:element name="PatternNikonX" type="xs:decimal"/>
+	<xs:element name="PatternNikonY" type="xs:decimal"/>
+	<xs:element name="PatternMultiPlacement" type="xs:string"/>
+	<xs:element name="InnerTitles">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="InnerTitle" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PatternPlacements">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PatternPlacement" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PatternPlacement">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PatternPlacementNumber"/>
+				<xs:element ref="X-Coord"/>
+				<xs:element ref="Y-Coord"/>
+				<xs:element ref="Stepping" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+			<xs:attribute name="PatternNumber" type="xs:integer" use="required"/>
+			<xs:attribute name="PatternGroup" type="xs:integer" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PatternPlacementNumber" type="xs:integer"/>
+	<xs:element name="Stepping">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="SteppingDistanceX"/>
+				<xs:element ref="SteppingDistanceY"/>
+				<xs:element ref="SteppingCountX"/>
+				<xs:element ref="SteppingCountY"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="SteppingDistanceX" type="xs:decimal"/>
+	<xs:element name="SteppingDistanceY" type="xs:decimal"/>
+	<xs:element name="SteppingCountX" type="xs:integer"/>
+	<xs:element name="SteppingCountY" type="xs:integer"/>
+	<xs:element name="MaskTitles">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="MaskTitle" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MaskTitle">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TitleNumber"/>
+				<xs:element ref="TitleText" minOccurs="0"/>
+				<xs:element ref="TitleParity" minOccurs="0"/>
+				<xs:element ref="TitleLocation" minOccurs="0"/>
+				<xs:element ref="TitleComment" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="TitleNumber" type="xs:integer"/>
+	<xs:element name="TitleText" type="xs:string"/>
+	<xs:element name="TitleParity" type="xs:string"/>
+	<xs:element name="TitleLocation" type="xs:string"/>
+	<xs:element name="TitleComment" type="xs:string"/>
+	<xs:element name="InnerTitle">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="TitleNumber"/>
+				<xs:element ref="InnerTitleText" minOccurs="0"/>
+				<xs:element ref="FontType" minOccurs="0"/>
+				<xs:element ref="InnerTitlePositions" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="InnerTitleText" type="xs:string"/>
+	<xs:element name="FontType" type="xs:string"/>
+	<xs:element name="InnerTitlePositions">
+		<xs:complexType>
+			<xs:choice maxOccurs="4">
+				<xs:element ref="ClearPosition1" minOccurs="0"/>
+				<xs:element ref="ClearPosition2" minOccurs="0"/>
+				<xs:element ref="DarkPosition1" minOccurs="0"/>
+				<xs:element ref="DarkPosition2" minOccurs="0"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ClearPosition1" type="position"/>
+	<xs:element name="ClearPosition2" type="position"/>
+	<xs:element name="DarkPosition1" type="position"/>
+	<xs:element name="DarkPosition2" type="position"/>
+	<xs:element name="Barcodes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Barcode" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Barcode">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="BarcodeNumber"/>
+				<xs:element ref="BarcodeType" minOccurs="0"/>
+				<xs:element ref="BarcodeLocation" minOccurs="0"/>
+				<xs:element ref="BarcodeRotation" minOccurs="0"/>
+				<xs:element ref="BarcodeJustification" minOccurs="0"/>
+				<xs:element ref="HumanReadable" minOccurs="0"/>
+				<xs:element ref="BarcodeText" minOccurs="0"/>
+				<xs:element ref="BarcodeComment" minOccurs="0"/>	
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BarcodeNumber" type="xs:integer"/>
+	<xs:element name="BarcodeType" type="xs:string"/>
+	<xs:element name="BarcodeLocation" type="xs:string"/>
+	<xs:element name="BarcodeRotation" type="xs:string"/>
+	<xs:element name="BarcodeJustification" type="xs:string"/>
+	<xs:element name="HumanReadable" type="xs:string"/>
+	<xs:element name="BarcodeText" type="xs:string"/>
+	<xs:element name="BarcodeComment" type="xs:string"/>
+	<xs:element name="Lithos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Litho" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Litho">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="NALithoPlatform" minOccurs="0"/>
+				<xs:element ref="PrimarySupplier" minOccurs="0"/>
+				<xs:element ref="PrimaryPartNumber" minOccurs="0"/>
+				<xs:element ref="AlternateSupplier" minOccurs="0"/>
+				<xs:element ref="AlternatePartNumber" minOccurs="0"/>
+				<xs:element ref="ThirdSupplier" minOccurs="0"/>
+				<xs:element ref="ThirdPartNumber" minOccurs="0"/>
+				<xs:element ref="Substrate" minOccurs="0"/>
+				<xs:element ref="BlankSize" minOccurs="0"/>
+				<xs:element ref="BlankThickness" minOccurs="0"/>
+				<xs:element ref="BlankFlatness" minOccurs="0"/>
+				<xs:element ref="MinReqLithoTool" minOccurs="0"/>
+				<xs:element ref="MaxReqLithoTool" minOccurs="0"/>
+				<xs:element ref="CustomerJobDeckName" minOccurs="0"/>
+				<xs:element ref="CustomerJobLevel" minOccurs="0"/>
+				<xs:element ref="RecycledAllowed" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+			<xs:attribute name="PhaseCode" type="xs:string" use="required"/>
+			<xs:attribute name="Platform" type="xs:string" use="required"/>			
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="NALithoPlatform" type="YNOrEmpty"/>
+	<xs:element name="PrimarySupplier" type="xs:string"/>
+	<xs:element name="PrimaryPartNumber" type="xs:string"/>
+	<xs:element name="AlternateSupplier" type="xs:string"/>
+	<xs:element name="AlternatePartNumber" type="xs:string"/>
+	<xs:element name="ThirdSupplier" type="xs:string"/>
+	<xs:element name="ThirdPartNumber" type="xs:string"/>
+	<xs:element name="Substrate" type="xs:string"/>
+	<xs:element name="BlankSize" type="xs:string"/>
+	<xs:element name="BlankThickness" type="xs:string"/>
+	<xs:element name="BlankFlatness" type="xs:string"/>
+	<xs:element name="MinReqLithoTool" type="xs:string"/>
+	<xs:element name="MaxReqLithoTool" type="xs:string"/>
+	<xs:element name="CustomerJobDeckName" type="xs:string"/>
+	<xs:element name="CustomerJobLevel" type="xs:decimal"/>
+	<xs:element name="RecycledAllowed" type="xs:string"/>
+	<!-- change this to a list of values -->
+	<xs:element name="Fractures">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Fracture" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Fracture">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="BasePath" minOccurs="0"/>
+				<xs:element ref="DatabaseFilename" minOccurs="0"/>
+				<xs:element ref="TopCell" minOccurs="0"/>
+				<xs:element ref="GDSLayer" minOccurs="0"/>
+				<xs:element ref="DigitizedDataTone" minOccurs="0"/>
+				<xs:element ref="WindowLimits" minOccurs="0"/>
+				<xs:element ref="Magnification" minOccurs="0"/>
+				<xs:element ref="ScaleFactor" minOccurs="0"/>
+				<xs:element ref="BooleanFunction" minOccurs="0"/>
+				<xs:element ref="BooleanGDSLayer" minOccurs="0"/>
+				<xs:element ref="SizingPerSide" minOccurs="0"/>
+				<xs:element ref="AddressUnitsOut" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+			<xs:attribute name="PatternNumber" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BasePath" type="xs:string"/>
+	<xs:element name="DatabaseFilename" type="xs:string"/>
+	<xs:element name="TopCell" type="xs:string"/>
+	<xs:element name="GDSLayer" type="xs:string"/>
+	<xs:element name="DigitizedDataTone" type="xs:string"/>
+	<xs:element name="Magnification" type="xs:string"/>
+	<xs:element name="ScaleFactor" type="xs:decimal"/>
+	<xs:element name="BooleanFunction" type="xs:string"/>
+	<xs:element name="BooleanGDSLayer" type="xs:string"/>
+	<xs:element name="SizingPerSide" type="xs:string"/>
+	<xs:element name="AddressUnitsOut" type="xs:string"/>
+	<xs:element name="WindowLimits">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="WindowLimitsLL" minOccurs="0"/>
+				<xs:element ref="WindowLimitsUR" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="WindowLimitsLL" type="position"/>
+	<xs:element name="WindowLimitsUR" type="position"/>
+	<xs:element name="CDs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CD" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CD">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CDNumber"/>
+				<xs:element ref="CDPhaseCode" minOccurs="0"/>
+				<xs:element ref="NoCDsReq" minOccurs="0"/>
+				<xs:element ref="CDName" minOccurs="0"/>
+				<xs:element ref="CDFeature" minOccurs="0"/>
+				<xs:element ref="CDFeatureDensity" minOccurs="0"/>
+				<xs:element ref="CDIsOpc" minOccurs="0"/>
+				<xs:element ref="MeasurementDefinition" minOccurs="0"/>
+				<xs:element ref="CDCorrelation" minOccurs="0"/>
+				<xs:element ref="NumberOfCDs" minOccurs="0"/>
+				<xs:element ref="DataCD" minOccurs="0"/>
+				<xs:element ref="CDBias" minOccurs="0"/>
+				<xs:element ref="MaskCD" minOccurs="0"/>
+				<xs:element ref="CDTone" minOccurs="0"/>
+				<xs:element ref="Digitized" minOccurs="0"/>
+				<xs:element ref="InfoOnly" minOccurs="0"/>
+				<xs:element ref="XYRequired" minOccurs="0"/>
+				<xs:element ref="PrimeAltMeasMethod" minOccurs="0"/>
+				<xs:element ref="ToleranceValue" minOccurs="0"/>
+				<xs:element ref="ToleranceDefinition" minOccurs="0"/>
+				<xs:element ref="UniformityMeasurementType" minOccurs="0"/>
+				<xs:element ref="UniformityValue" minOccurs="0"/>
+				<xs:element ref="UniformityDefinition" minOccurs="0"/>
+				<xs:element ref="XYTolerance" minOccurs="0"/>
+				<xs:element ref="XYDefinition" minOccurs="0"/> 
+				<xs:element ref="NAXYTolerance" minOccurs="0"/> <!-- Added 02/08/23 -->
+				<xs:element ref="CalculateCDs" minOccurs="0"/>
+				<xs:element ref="CDMeasurementTool" minOccurs="0"/>
+				<xs:element ref="CDAltTool1" minOccurs="0"/>
+				<xs:element ref="CDAltTool2" minOccurs="0"/>
+				<xs:element ref="OnlyBetter" minOccurs="0"/>
+				<xs:element ref="AdditionalTolDefinitions" minOccurs="0"/>
+				<xs:element ref="AdditionalUnifDefinitions" minOccurs="0"/>
+				<xs:element ref="CDLocations" minOccurs="0"/>
+				<xs:element ref="KMSScriptReq" minOccurs="0"/>
+				<xs:element ref="Filename" minOccurs="0"/>
+				<xs:element ref="CDDrawing" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+			<xs:attribute name="PatternNumber" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CDNumber" type="xs:integer"/>
+	<xs:element name="CDPhaseCode" type="xs:string"/>
+	<xs:element name="NoCDsReq" type="xs:string"/>
+	<xs:element name="CDName" type="xs:string"/>
+	<xs:element name="CDFeature" type="xs:string"/>
+	<xs:element name="CDFeatureDensity" type="xs:string"/>
+	<xs:element name="CDIsOpc" type="xs:string"/>
+	<xs:element name="MeasurementDefinition" type="xs:string"/>
+	<xs:element name="CDCorrelation" type="xs:string"/>
+	<xs:element name="NumberOfCDs" type="xs:integer"/>
+	<xs:element name="DataCD" type="xs:decimal"/>
+	<xs:element name="MaskCD" type="xs:decimal"/>
+	<xs:element name="CDBias" type="xs:decimal"/>
+	<xs:element name="CDTone" type="xs:string"/>
+	<xs:element name="Digitized" type="YNOrEmpty"/>
+	<xs:element name="InfoOnly" type="YNOrEmpty"/>
+	<xs:element name="CalculateCDs" type="xs:string"/>
+	<xs:element name="XYRequired" type="YNOrEmpty"/>
+	<xs:element name="PrimeAltMeasMethod" type="xs:string"/>
+	<xs:element name="ToleranceValue" type="xs:decimal"/>
+	<xs:element name="ToleranceDefinition" type="xs:string"/>
+	<xs:element name="UniformityMeasurementType" type="xs:string"/>
+	<xs:element name="UniformityValue" type="xs:decimal"/>
+	<xs:element name="UniformityDefinition" type="xs:string"/>
+	<xs:element name="XYTolerance" type="xs:decimal"/>
+	<xs:element name="XYDefinition" type="xs:string"/>
+	<xs:element name="NAXYTolerance" type="YNOrEmpty"/> <!-- Added 02/08/23 -->
+	<xs:element name="CDMeasurementTool" type="xs:string"/>
+	<xs:element name="CDAltTool1" type="xs:string"/>
+	<xs:element name="CDAltTool2" type="xs:string"/>
+	<xs:element name="OnlyBetter" type="xs:string"/>
+	<xs:element name="AdditionalTolDefinitions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AdditionalTolDefinition" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AdditionalTolDefinition">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="AddlTolNum" type="xs:integer"/>
+				<xs:element name="AddlTolMeasType" type="xs:string" minOccurs="0"/>
+				<xs:element name="AddlTolValue" type="xs:decimal" minOccurs="0"/>
+				<xs:element name="AddlTolDefinition" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AdditionalUnifDefinitions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AdditionalUnifDefinition" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AdditionalUnifDefinition">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="AddlUnifNum" type="xs:integer"/>
+				<xs:element name="AddlUnifMeasType" type="xs:string" minOccurs="0"/>
+				<xs:element name="AddlUnifValue" type="xs:decimal" minOccurs="0"/>
+				<xs:element name="AddlUnifDefinition" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="CDLocations">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CDLocation" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CDLocation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="LocationNumber" type="xs:integer"/>
+				<xs:element name="Description" type="xs:string" minOccurs="0"/>
+				<xs:element name="Orientation" type="xs:string" minOccurs="0"/>
+				<xs:element ref="X-Coord"/>
+				<xs:element ref="Y-Coord"/>
+				<xs:element name="MaskSpace" type="xs:decimal" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="KMSScriptReq" type="xs:string"/>
+	<xs:element name="Filename" type="xs:string"/>
+	<xs:element name="CDDrawing" type="xs:string"/>
+	<xs:element name="Contact">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="FirstName" type="xs:string" minOccurs="0"/>
+				<xs:element name="LastName" type="xs:string" minOccurs="0"/>
+				<xs:element ref="Email" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Email" type="xs:string"/>
+	<!-- only an approximate validation of email string -->
+	<xs:simpleType name="emailString">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[^@]+@[^\.]+\..+"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="defectDensityString">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="((\s*\d{0,6}(\.\d{0,3}){0,1}){1}\s+(.+))*"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="deviceRequiredString">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="30"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="requiredString">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="YNOrEmpty">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="Y"/>
+			<xs:enumeration value="N"/>
+			<xs:enumeration value="y"/>
+			<xs:enumeration value="n"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="requiredApproval">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="None"/>
+			<xs:enumeration value="Required"/>
+			<xs:enumeration value="Approval"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="approval">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+			<xs:enumeration value="None"/>
+			<xs:enumeration value="Approval"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="position">
+		<xs:sequence>
+			<xs:element ref="X-Coord"/>
+			<xs:element ref="Y-Coord"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="X-Coord" type="xs:decimal"/>
+	<xs:element name="Y-Coord" type="xs:decimal"/>
+	<xs:simpleType name="validDateWithOptionalTime">
+		<xs:restriction base="xs:token">
+		    <!-- Thirty days hath September 
+ 		    April, June, and November.
+			All the rest have thirty-one,
+			Excepting February alone,
+			And that has twenty-eight days clear,
+			And twenty-nine in each leap year. translates into -->
+			<xs:pattern value="(((0?[1-9]|[12][0-9]|3[01])-(J(an|ul|AN|UL)|M(ar|ay|AR|AY)|A(ug|UG)|O(ct|CT)|D(ec|EC))-[1-2][0-9]{3})|((0?[1-9]|[12][0-9]|30)-(A(pr|PR)|J(un|UN)|S(ep|EP)|N(ov|OV))-[1-2][0-9]{3})|((0?[1-9]|1[0-9]|2[0-8])-F(eb|EB)-[1-2][0-9]{3})|29-F(eb|EB)-((0[48]|[2468][048]|[13579][26])00|[0-9]{2}(0[48]|[2468][048]|[13579][26])))(\s[012]?\d:[0-5]\d(:[0-5]\d)?)?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="preserveWhitespace">
+		<xs:restriction base="xs:string">
+			<xs:whiteSpace value="preserve"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="LayerCDs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="LayerCD" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LayerCD">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CDReq" minOccurs="0"/>
+				<xs:element ref="Type" minOccurs="0"/>
+				<xs:element ref="Definition" minOccurs="0"/>
+				<xs:element ref="Value" minOccurs="0"/>
+				<xs:element ref="MaxValue" minOccurs="0"/>
+				<xs:element ref="NAMaxValue" minOccurs="0"/>
+                <xs:element ref="LayerCalculateCDs" minOccurs="0"/>  
+		        <xs:element ref="IncludeCDs" minOccurs="0"/>
+				<xs:element ref="CompareCDGroups" minOccurs="0"/>
+				<xs:element ref="CompareCDs" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+			<xs:attribute name="Number" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CDReq" type="YNOrEmpty"/>
+	<xs:element name="Type" type="xs:string"/>
+	<xs:element name="Definition" type="xs:string"/>
+	<xs:element name="Value" type="xs:decimal"/>
+	<xs:element name="MaxValue" type="xs:decimal"/>
+	<xs:element name="NAMaxValue" type="YNOrEmpty"/>
+	<xs:element name="LayerCalculateCDs" type="xs:string"/>
+	<xs:element name="IncludeCDs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="IncludeCD" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="IncludeCD">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="IncludePhaseStage" minOccurs="0"/>
+				<xs:element ref="IncludePatternNumber" minOccurs="0"/>
+				<xs:element ref="IncludePatternCDNumber" minOccurs="0"/>				
+			</xs:sequence>			
+		</xs:complexType>
+	</xs:element>
+        <xs:element name="IncludePhaseStage" type="xs:string"/>
+	<xs:element name="IncludePatternNumber" type="xs:integer"/>
+	<xs:element name="IncludePatternCDNumber" type="xs:integer"/>
+	<xs:element name="CompareCDGroups">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CompareCDGroup" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CompareCDGroup">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CompCDGroup" minOccurs="0"/>
+				<xs:element ref="ComparePhaseStage" minOccurs="0"/>
+				<xs:element ref="ComparePatternNumber" minOccurs="0"/>	
+				<xs:element ref="ComparePatternCDNumber" minOccurs="0"/>	
+			</xs:sequence>			
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CompCDGroup" type="xs:string"/>
+	<xs:element name="ComparePhaseStage" type="xs:string"/>
+	<xs:element name="ComparePatternNumber" type="xs:integer"/>
+	<xs:element name="ComparePatternCDNumber" type="xs:integer"/>
+	<xs:element name="CompareCDs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CompareCD" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CompareCD">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CompCD" maxOccurs="2"/>
+				<xs:element ref="CompareCDLocations" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+                        <xs:attribute name="Number" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CompCD">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CompCDPhaseCode"/>
+				<xs:element ref="CompCDPatternNum"/>
+				<xs:element ref="CompCDPatternName"/>
+				<xs:element ref="CompCDPatternCDNum"/>
+			</xs:sequence>
+			<xs:attribute name="Number" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CompCDPhaseCode" type="xs:string"/>
+	<xs:element name="CompCDPatternNum" type="xs:integer"/>
+	<xs:element name="CompCDPatternName" type="xs:string"/>
+	<xs:element name="CompCDPatternCDNum" type="xs:integer"/>
+
+	<xs:element name="CompareCDLocations">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CompareCDLocation" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CompareCDLocation">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Location" maxOccurs="unbounded"/>
+			</xs:sequence>
+                        <xs:attribute name="Number" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>	
+		<xs:element name="Location">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="LocDescription"/>
+				<xs:element ref="LocCDOrientation"/>
+				<xs:element ref="LocXCoordinate"/>
+				<xs:element ref="LocYCoordinate"/>
+			</xs:sequence>
+			<xs:attribute name="Number" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="LocDescription" type="xs:string"/>
+	<xs:element name="LocCDOrientation" type="xs:string"/>
+	<xs:element name="LocXCoordinate" type="xs:decimal"/>
+	<xs:element name="LocYCoordinate" type="xs:decimal"/>
+	
+	<xs:element name="CDImagings">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CDImaging" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CDImaging">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CDImagingTool" minOccurs="0"/>
+				<xs:element ref="CDImagingComments" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+			<xs:attribute name="Number" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CDImagingTool" type="xs:string"/>
+	<xs:element name="CDImagingComments" type="xs:string"/>	
+		<xs:element name="Defects">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Defect" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Defect">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="StrategyComplete" minOccurs="0"/>
+				<xs:element ref="DefectSize" minOccurs="0"/>
+				<xs:element ref="BorderType" minOccurs="0"/>
+				<xs:element ref="BorderSize" minOccurs="0"/>
+				<xs:element ref="PrePellDefects" minOccurs="0"/>
+				<xs:element ref="PostPellDefects" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="StrategyComplete" type="YNOrEmpty"/>
+	<xs:element name="DefectSize" type="xs:decimal"/>
+	<xs:element name="BorderType" type="xs:string"/>
+	<xs:element name="BorderSize" type="xs:string"/>
+	<xs:element name="PrePellDefects">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PrePellDefect" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="PrePellDefect">
+		<xs:complexType>
+			<xs:sequence>
+			    <xs:element ref="FFDTDB" minOccurs="0"/>
+				<xs:element ref="FFDTDBReqBy" minOccurs="0"/>
+				<xs:element ref="FFStarlight" minOccurs="0"/>
+				<xs:element ref="FFStarlightReqBy" minOccurs="0"/>				
+			</xs:sequence>
+			<xs:attribute name="PhaseCode" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="FFDTDB" type="xs:string"/>
+	<xs:element name="FFDTDBReqBy" type="xs:string"/>	
+	<xs:element name="FFStarlight" type="xs:string"/>
+	<xs:element name="FFStarlightReqBy" type="xs:string"/>
+	<xs:element name="PostPellDefects">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PostPellDefect" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="PostPellDefect">
+		<xs:complexType>
+			<xs:sequence>
+			    <xs:element ref="FFTPDTDB" minOccurs="0"/>
+				<xs:element ref="FFTPDTDBReqBy" minOccurs="0"/>
+				<xs:element ref="FFTPStarlight" minOccurs="0"/>
+				<xs:element ref="FFTPStarlightReqBy" minOccurs="0"/>				
+			</xs:sequence>			
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="FFTPDTDB" type="xs:string"/>
+	<xs:element name="FFTPDTDBReqBy" type="xs:string"/>	
+	<xs:element name="FFTPStarlight" type="xs:string"/>
+	<xs:element name="FFTPStarlightReqBy" type="xs:string"/>	
+	<xs:element name="AIMs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AIM" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AIM">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AIMsPhaseCodes" minOccurs="0"/>			
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+		<xs:element name="AIMsPhaseCodes">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AIMsPhaseCode" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="AIMsPhaseCode">
+		<xs:complexType>
+			<xs:sequence>
+			<xs:element ref="MeasureNumber" minOccurs="0"/>	
+			<xs:element ref="Rotate" minOccurs="0"/>
+			<xs:element ref="MaskDirection" minOccurs="0"/>
+			<xs:element ref="MeasurementArea" minOccurs="0"/>
+			<xs:element ref="SigmaAperture" minOccurs="0"/>
+			<xs:element ref="NumericalAperture" minOccurs="0"/>
+			<xs:element ref="IlluminationType" minOccurs="0"/>
+			<xs:element ref="Polarization" minOccurs="0"/>
+			<xs:element ref="MeasureTool" minOccurs="0"/>
+			<xs:element ref="AltTool1" minOccurs="0"/>
+			<xs:element ref="AltTool2" minOccurs="0"/>
+			<xs:element ref="AIMsReqBy" minOccurs="0"/>
+			<xs:element ref="OnlyOrBetter" minOccurs="0"/>
+			<xs:element ref="Comments" minOccurs="0"/>	
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" use="required"/>
+		</xs:complexType>			
+	</xs:element>
+        <xs:element name="MeasureNumber" type="xs:decimal"/>
+	<xs:element name="Rotate" type="xs:decimal"/>
+	<xs:element name="MaskDirection" type="xs:string"/>
+	<xs:element name="MeasurementArea" type="xs:string"/>
+	<xs:element name="SigmaAperture" type="xs:string"/>
+	<xs:element name="NumericalAperture" type="xs:decimal"/>
+	<xs:element name="IlluminationType" type="xs:string"/>	
+	<xs:element name="Polarization" type="xs:string"/>
+	<xs:element name="MeasureTool" type="xs:string"/>
+	<xs:element name="AltTool1" type="xs:string"/>
+	<xs:element name="AltTool2" type="xs:string"/>	
+	<xs:element name="AIMsReqBy" type="xs:string"/>	
+	<xs:element name="OnlyOrBetter" type="xs:string"/>	
+	<xs:element name="Comments" type="xs:string"/>
+	<xs:element name="Pellicles">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Pellicle" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Pellicle">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="NoPellReq" minOccurs="0"/>
+				<xs:element ref="CustPellicleLabel" minOccurs="0"/>				
+				<xs:element ref="PrimaryPellSupplier" minOccurs="0"/>
+				<xs:element ref="SecondaryPellSupplier" minOccurs="0"/>
+				<xs:element ref="PrimaryPellChromePartNumber" minOccurs="0"/>
+				<xs:element ref="PrimaryPellGlassPartNumber" minOccurs="0"/>
+				<xs:element ref="SecPellChromePartNumber" minOccurs="0"/>
+				<xs:element ref="SecPellGlassPartNumber" minOccurs="0"/>
+				<xs:element ref="NACustPellicleLabel" minOccurs="0"/>
+				<xs:element ref="NAPrimaryPellSupplier" minOccurs="0"/>
+				<xs:element ref="NASecondaryPellSupplier" minOccurs="0"/>
+				<xs:element ref="NAPrimaryPellChromePartNumber" minOccurs="0"/>				
+				<xs:element ref="NAPrimaryPellGlassPartNumber" minOccurs="0"/>
+				<xs:element ref="NASecPellChromePartNumber" minOccurs="0"/>				
+				<xs:element ref="NASecPellGlassPartNumber" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="NoPellReq" type="xs:string"/>
+	<xs:element name="CustPellicleLabel" type="xs:string"/>
+	<xs:element name="PrimaryPellSupplier" type="xs:string"/>
+	<xs:element name="SecondaryPellSupplier" type="xs:string"/>
+	<xs:element name="PrimaryPellChromePartNumber" type="xs:string"/>
+	<xs:element name="PrimaryPellGlassPartNumber" type="xs:string"/>	
+	<xs:element name="SecPellChromePartNumber" type="xs:string"/>	
+	<xs:element name="SecPellGlassPartNumber" type="xs:string"/>
+	<xs:element name="NACustPellicleLabel" type="YNOrEmpty"/>
+	<xs:element name="NAPrimaryPellSupplier" type="YNOrEmpty"/>
+	<xs:element name="NASecondaryPellSupplier" type="YNOrEmpty"/>
+	<xs:element name="NAPrimaryPellChromePartNumber" type="YNOrEmpty"/>	
+	<xs:element name="NAPrimaryPellGlassPartNumber" type="YNOrEmpty"/>
+	<xs:element name="NASecPellChromePartNumber" type="YNOrEmpty"/>
+	<xs:element name="NASecPellGlassPartNumber" type="YNOrEmpty"/>	
+	<xs:element name="Registrations">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Registration" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Registration">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="RegistrationPhaseCode" minOccurs="0"/>
+                                <xs:element ref="MeasurementType" minOccurs="0"/>
+                                <xs:element ref="PrimeAltTol" minOccurs="0"/>
+                                <xs:element ref="Feature"  minOccurs="0"/>
+                                <xs:element ref="RefGrid"  minOccurs="0"/>
+				<xs:element ref="RegistrationGuar" minOccurs="0"/>
+				<xs:element ref="RegistrationGrid" minOccurs="0"/>
+				<xs:element ref="RegistrationRefLayer" minOccurs="0"/>
+				<xs:element ref="RegistrationRefLayerId" minOccurs="0"/>
+				<xs:element ref="RegistrationTolerance" minOccurs="0"/>
+				<xs:element ref="TolDefinition" minOccurs="0"/>				
+				<xs:element ref="RegistrationTemperature" minOccurs="0"/>
+				<xs:element ref="RegistrationTool" minOccurs="0"/>
+				<xs:element ref="MeasureMethod" minOccurs="0"/>
+				<xs:element ref="NumberOfPoints" minOccurs="0"/>
+				<xs:element ref="AlignMethod" minOccurs="0"/>
+                                <xs:element ref="RegistrationComments" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+			<xs:attribute name="Number" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="RegistrationPhaseCode" type="xs:string"/>
+        <xs:element name="MeasurementType" type="xs:string"/>
+        <xs:element name="PrimeAltTol" type="xs:string"/>
+        <xs:element name="Feature" type="xs:string"/>
+        <xs:element name="RefGrid" type="YNOrEmpty"/>
+	<xs:element name="RegistrationGuar" type="YNOrEmpty"/>
+	<xs:element name="RegistrationGrid" type="xs:string"/>
+	<xs:element name="RegistrationRefLayer" type="YNOrEmpty"/>
+	<xs:element name="RegistrationRefLayerId" type="xs:string"/>
+	<xs:element name="RegistrationTolerance" type="xs:decimal"/>	
+	<xs:element name="TolDefinition" type="xs:string"/>
+	<xs:element name="RegistrationTemperature" type="xs:string"/>
+	<xs:element name="RegistrationTool" type="xs:string"/>
+	<xs:element name="MeasureMethod" type="xs:string"/>
+	<xs:element name="NumberOfPoints" type="xs:decimal"/>
+	<xs:element name="AlignMethod" type="xs:string"/>
+        <xs:element name="RegistrationComments" type="xs:string"/>
+	<xs:element name="DataOutputs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Data" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Data">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Departments" minOccurs="0" maxOccurs="unbounded"/>			    
+			</xs:sequence>
+			   <xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Departments">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Department" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Department">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Outputs" minOccurs="0" maxOccurs="unbounded"/>			    
+			</xs:sequence>
+			   <xs:attribute name="Name" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="Outputs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Output" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Output">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="OutputType1" minOccurs="0" maxOccurs="unbounded"/>			    
+				<xs:element ref="OutputType2" minOccurs="0" maxOccurs="unbounded"/>			    
+				<xs:element ref="DataOutput" minOccurs="0" maxOccurs="unbounded"/>			    
+				<xs:element ref="DataPackage" minOccurs="0" maxOccurs="unbounded"/>			    
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OutputType1" type="xs:string"/>
+	<xs:element name="OutputType2" type="xs:string"/>
+	<xs:element name="DataOutput" type="xs:string"/>
+	<xs:element name="DataPackage" type="xs:string"/>
+    <xs:element name="Packagings">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Packaging" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="Packaging">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="CompactNumber"/>
+                <xs:element ref="PrimaryCompactSupplier" minOccurs="0"/>
+                <xs:element ref="PrimaryCompactPartNumber" minOccurs="0"/>
+                <xs:element ref="SecondaryCompactSupplier" minOccurs="0"/>
+                <xs:element ref="SecondaryCompactPartNumber" minOccurs="0"/>
+                <xs:element ref="MaskOrientation" minOccurs="0"/>
+                <xs:element ref="LabelOrientation" minOccurs="0"/>
+                <xs:element ref="LabelInstructions" minOccurs="0"/>
+                <xs:element ref="TapeInstructions" minOccurs="0"/>
+                <xs:element ref="BagInstructions" minOccurs="0"/>				
+                <xs:element ref="PackagingComments" minOccurs="0"/>								
+            </xs:sequence>
+            <xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="CompactNumber" type="xs:integer"/>
+    <xs:element name="PrimaryCompactSupplier" type="xs:string"/>
+    <xs:element name="PrimaryCompactPartNumber" type="xs:string"/>
+    <xs:element name="SecondaryCompactSupplier" type="xs:string"/>
+    <xs:element name="SecondaryCompactPartNumber" type="xs:string"/>
+    <xs:element name="MaskOrientation" type="xs:string"/>
+    <xs:element name="LabelOrientation" type="xs:string"/>
+    <xs:element name="LabelInstructions" type="xs:string"/>
+    <xs:element name="TapeInstructions" type="xs:string"/>
+    <xs:element name="BagInstructions" type="xs:string"/>
+    <xs:element name="PackagingComments" type="xs:string"/>	
+    <xs:element name="PSRs">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PSR" minOccurs="0" maxOccurs="unbounded"/>				
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PSR">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PhaseTrans" minOccurs="0"/>			
+				<xs:element ref="QED" minOccurs="0"/>
+				<xs:element ref="ResistCoat" minOccurs="0"/>				
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PhaseTrans">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PTPhaseStage" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>			
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="PTPhaseStage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="PTMeasNumber" minOccurs="0"/>	
+				<xs:element ref="PTReqYN" minOccurs="0"/>
+				<xs:element ref="PTTool" minOccurs="0"/>
+				<xs:element ref="PTMeasLoc" minOccurs="0"/>
+				<xs:element ref="PhaseTarget" minOccurs="0"/>
+				<xs:element ref="PhaseTolValue" minOccurs="0"/>
+				<xs:element ref="PhaseTolDefinition" minOccurs="0"/>
+				<xs:element ref="PhaseUnifValue" minOccurs="0"/>
+				<xs:element ref="PhaseUnifDefinition" minOccurs="0"/>
+				<xs:element ref="TransTarget" minOccurs="0"/>
+				<xs:element ref="TransTolValue" minOccurs="0"/>
+				<xs:element ref="TransTolDefinition" minOccurs="0"/>
+				<xs:element ref="TransUnifValue" minOccurs="0"/>
+				<xs:element ref="TransUnifDefinition" minOccurs="0"/>				
+				<xs:element ref="PTComments" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" use="required"/>
+		</xs:complexType>			
+	</xs:element>
+    <xs:element name="PTMeasNumber" type="xs:integer"/>
+	<xs:element name="PTReqYN" type="YNOrEmpty"/>
+	<xs:element name="PTTool" type="xs:string"/>
+	<xs:element name="PTMeasLoc" type="xs:decimal"/>	
+	<xs:element name="PhaseTarget" type="xs:decimal"/>
+	<xs:element name="PhaseTolValue" type="xs:decimal"/>
+	<xs:element name="PhaseTolDefinition" type="xs:string"/>
+	<xs:element name="PhaseUnifValue" type="xs:decimal"/>
+	<xs:element name="PhaseUnifDefinition" type="xs:string"/>
+	<xs:element name="TransTarget" type="xs:decimal"/>
+	<xs:element name="TransTolValue" type="xs:decimal"/>
+	<xs:element name="TransTolDefinition" type="xs:string"/>
+	<xs:element name="TransUnifValue" type="xs:decimal"/>
+	<xs:element name="TransUnifDefinition" type="xs:string"/>
+	<xs:element name="PTComments" type="xs:string"/>
+	<xs:element name="QED">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="QEDPhaseStage" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>			
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="QEDPhaseStage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="QEDMeasNumber" minOccurs="0"/>	
+				<xs:element ref="QEDReqYN" minOccurs="0"/>
+				<xs:element ref="QEDTool" minOccurs="0"/>
+				<xs:element ref="QEDMeasLoc" minOccurs="0"/>							
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" use="required"/>
+		</xs:complexType>			
+	</xs:element>
+    <xs:element name="QEDMeasNumber" type="xs:integer"/>
+	<xs:element name="QEDReqYN" type="YNOrEmpty"/>
+	<xs:element name="QEDTool" type="xs:string"/>
+	<xs:element name="QEDMeasLoc" type="xs:decimal"/>
+	<xs:element name="ResistCoat">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ResistCoatPhaseStage" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>			
+		</xs:complexType>
+	</xs:element>	
+	<xs:element name="ResistCoatPhaseStage">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="ResistType" minOccurs="0"/>	
+				<xs:element ref="Hmds" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="Name" type="xs:string" use="required"/>
+		</xs:complexType>			
+	</xs:element>
+	<xs:element name="ResistType" type="xs:string"/>
+	<xs:element name="Hmds" type="xs:string"/>
+	<xs:element name="AdditionalInfos">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="AdditionalInfo" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="AdditionalInfo">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="CofcFieldName" minOccurs="0"/>
+				<xs:element ref="CofcFieldValue" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="LayerNumber" type="xs:integer" use="required"/>			
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="CofcFieldName" type="xs:string"/>
+	<xs:element name="CofcFieldValue" type="xs:string"/>
+</xs:schema>

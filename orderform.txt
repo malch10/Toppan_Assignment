@@ -1,0 +1,37 @@
+___ Wed Nov 17 09:12:05 2021 ________________________________________________________________________________________________________
+|XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX| 
+|    !CUSTOMER_NAME__!!                        MASK SUPPLIER : TOPPAN                                      DATE : 11/17/2021       | 
+|                                                                                                                                  | 
+|    SITE OF : IPSUMS1                         ORDERFORM NUMBER : IP 123456      REVISION : 01             PAGE : 1   OF  1        | 
+|----------------------------------------------------------------------------------------------------------------------------------| 
+|                                              TECHNOLOGY NAME : TCNM 0.000%                         STATUS    : N0                | 
+|   MASK SET NAME : AAAAA                                                                                                          | 
+|                                              FAB UNIT        : IPSUMS2                             EMAIL : 123@TUTANOTA:COM      | 
+|XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX| 
+|                                                                                                                                  | 
+|LEVEL         MASK CODIFICATION          GRP  CYCL QTY SHIP DATE                                                                  | 
+|------+---------------------------------+----+----+---+---------++------+---------------------------------+----+----+---+---------| 
+|   01 |DOL ORSI 1 T AME CONS ADIPS 0 P  |11  |BNN | 1 | 01JAN22 ||      |                                 |    |    |   |         |
+|   02 |DOL ORSI 2 T AME CONS ADIPS 0 P  |12  |BNM | 1 | 01JAN22 ||      |                                 |    |    |   |         | 
+|------+---------------------------------+----+----+---+---------++------+---------------------------------+----+----+---+---------| 
+|  P.O. NUMBERS : EI_USMN_024                          SPECIFICATIONS : 001/23445/6789101                                          | 
+|----------------------------------------------------------------------------------------------------------------------------------| 
+|  GROUP : 23  EQUIPMENT : ABC-1A-DE01   PELLICLE TYPE (GLASS) :                      PELLICLE TYPE (CHROME) : NO PELLICLE         | 
+|----------------------------------------------------------------------------------------------------------------------------------| 
+|  SITE TO SEND MASKS TO : SCHAUBURG               TO THE ATTENTION OF : M.MANN              CUSTOM CLEARANCE DONE BY :            | 
+|  SITE TO SEND INVOICE TO : MAN SITE              TECHNICAL CONTACT : M.MANN/MUSTERFRAU          SHIPPING METHOD :                | 
+|----------------------------------------------------------------------------------------------------------------------------------|        
+|    DEVICE : AA@BBBBB                                                                                                             |        
+|    SHRINK :  0.00   %                                                                                                            |        
+|----------------------------------+---------------------------------------------------------+-------------------------------------|        
+|                                  |                                                         |                                     |        
+|        LEVEL INFORMATION         |           CRITICAL DIMENSIONS' INFORMATION              |         FILES INFORMATION           |        
+|                                  |                                                         |                                     |        
+|-----+---+---+-----+-----+--------+------+-------+-------+-------+------+------+------+-----+------------+------------+-----------|        
+|LEVEL|REV|G/F|FIELD|SCALE|  SPOT  | CD   |  CD   |  CD   |  CD   | POLA | TOLE | CD   | CD  |  FILE NAME | TRAPEZOIDS |  BACKUP   |        
+|     |   |   |COLOR|     |  SIZE  | NUM  |  NAME |FEATURE|  TONE | RITY | RANCE| BIAS | DEF |            |   NUMBER   | /ARCHIVE  |        
+|-----+---+---+---+-+-----+--------+------+-------+-------+-------+------+------+------+-----+------------+------------+-----------|        
+|  01 | A0| G |SS | 1.0000|0.020000| 1    |  XAE2 |  LESS |  EARL |POSITI| YES  | NO   |YES  |123456789.1A|       14290|Oct18-10:09|
+|  02 | A2| F |S2 | 2.0000|0.025000| 2    |  XAE3 |  MORE |  FOOO |NEGATI| NO   | YES  |NO   |987654321.2B|       09241|Oct28-11:05|
+|XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|       _
+

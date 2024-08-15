@@ -1,0 +1,55 @@
+<OrderForm>
+  <Customer>!CUSTOMER_NAME__!!</Customer>
+  <Device>AA@BBBBB</Device>
+  <MaskSupplier>TOPPAN</MaskSupplier>
+  <Date>2021-11-17</Date>
+  <SiteOf>IPSUMS1</SiteOf>
+  <OrderFormNumber>IP 123456</OrderFormNumber>
+  <Revision>01</Revision>
+  <Page>1</Page>
+  <TechnologyName>TCNM 0.000%</TechnologyName>
+  <Status>N0</Status>
+  <MaskSetName>AAAAA</MaskSetName>
+  <FabUnit>IPSUMS2</FabUnit>
+  <EmailAddress>123@TUTANOTA:COM</EmailAddress>
+  <Levels>
+    <Level num="01">
+      <MaskCodification>DOL ORSI 1 T AME CONS ADIPS 0 P</MaskCodification>
+      <Group>11</Group>
+      <Cycle>BNN</Cycle>
+      <Quantity>1</Quantity>
+      <ShipDate>2022-01-01</ShipDate>
+    </Level>
+    <Level num="02">
+      <MaskCodification>DOL ORSI 2 T AME CONS ADIPS 0 P</MaskCodification>
+      <Group>12</Group>
+      <Cycle>BNM</Cycle>
+      <Quantity>1</Quantity>
+      <ShipDate>2022-01-01</ShipDate>
+    </Level>
+  </Levels>
+  <Cdinformation>
+    <Level>
+      <Revision>A0</Revision>
+      <CDNumber>1</CDNumber>
+      <CDName>XAE2</CDName>
+      <Feature>LESS</Feature>
+      <Tone>EARL</Tone>
+      <Polarity>POSITI</Polarity>
+    </Level>
+    <Level>
+      <Revision>A2</Revision>
+      <CDNumber>2</CDNumber>
+      <CDName>XAE3</CDName>
+      <Feature>MORE</Feature>
+      <Tone>FOOO</Tone>
+      <Polarity>NEGATI</Polarity>
+    </Level>
+  </Cdinformation>
+  <PONumbers>EI_USMN_024</PONumbers>
+  <SiteToSendMasksTo>SCHAUBURG</SiteToSendMasksTo>
+  <SiteToSendInvoiceTo>MAN SITE</SiteToSendInvoiceTo>
+  <TechnicalContact>M.MANN/MUSTERFRAU</TechnicalContact>
+  <ShippingMethod></ShippingMethod>
+  <AdditionalInformation></AdditionalInformation>
+</OrderForm>
